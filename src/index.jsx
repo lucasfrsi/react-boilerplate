@@ -7,8 +7,6 @@ import appStore from './store';
 
 import Layout from './components/Layout';
 
-import './index.scss';
-
 const Home = React.lazy(() => import('./pages/Home'));
 const Posts = React.lazy(() => import('./pages/Posts'));
 
@@ -27,4 +25,10 @@ const App = () => (
   </Provider>
 );
 
-ReactDOM.render(<App />, document.getElementById('root'));
+// Document Bootstrap
+const app = document.createElement('div');
+document.body.style.margin = 0;
+document.body.style.padding = 0;
+document.body.appendChild(app);
+
+ReactDOM.render(<App />, app);

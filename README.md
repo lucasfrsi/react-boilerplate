@@ -9,7 +9,7 @@ This project is meant to be used as a boilerplate code for web projects based on
 >- [react-router-dom]
 
 ### State Management and Side-Effects
->- [redux] - Redux DevTools [extension] pre-configured for Google Chrome.
+>- [redux] - pre-configured to use Redux DevTools [extension]. You **must** install it for it to work.
 >- [redux-saga]
 
 
@@ -33,21 +33,30 @@ $ npm install
 
 ### Development
 
+Run the project locally:
+
 ```sh
 $ npm start
 ```
 
 ### Building
 
+Create a **dist** directory with the production build of the app, ready for deployment. By default it runs the lint script right before building.
+
 ```sh
 $ npm run build
 ```
+
+Run the building script without linting.
 
 ```sh
 $ npm run build:nocheck
 ```
 
+Serve the generated assets locally using **http-server** package, for testing purposes. You **must** have it installed for it to work.
+
 ```sh
+$ npm i http-server -g
 $ npm run serve
 ```
 
@@ -59,11 +68,12 @@ $ npm run serve
 $ npm run lint
 ```
 
-#### Delete node_modules
+#### Delete node_modules (*This script won't work on Windows*)
 
 ```sh
-$ npm run clean:unix
+$ npm run clean
 ```
+
 ## To-dos
 
 - Implement Jest for testing purposes

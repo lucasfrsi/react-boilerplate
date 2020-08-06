@@ -81,7 +81,7 @@ module.exports = {
       chunkFilename: isDevelopment ? '[id].css' : '[id].[hash].css',
     }),
     new HtmlWebpackPlugin({
-      template: __dirname + '/src/index.html',
+      title: 'React Boilerplate',
       favicon: __dirname + '/src/assets/favicon.png'
     }),
     new webpack.HotModuleReplacementPlugin(),

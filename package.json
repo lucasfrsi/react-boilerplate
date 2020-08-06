@@ -8,10 +8,8 @@
     "build": "npm run lint && cross-env NODE_ENV=production webpack --config webpack.config.js --mode production",
     "build:nocheck": "cross-env NODE_ENV=production webpack --config webpack.config.js --mode production",
     "serve": "http-server ./dist -g",
-    "clean:unix": "rm -rf node_modules",
-    "clean:win": "",
-    "lint": "eslint \"**/*.{js,jsx}\"",
-    "test": ""
+    "clean": "rm -rf node_modules",
+    "lint": "eslint \"**/*.{js,jsx}\""
   },
   "repository": {
     "type": "git",
