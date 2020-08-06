@@ -33,7 +33,7 @@ $ npm install
 
 ### Development
 
-Run the project locally:
+Run the project locally.
 
 ```sh
 $ npm start
