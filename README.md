@@ -16,6 +16,9 @@ This project is meant to be used as a boilerplate code for web projects based on
 ### HTTP Requests
 >- [axios]
 
+### Styling
+>- [sass]
+
 ### Minification, Compression and Bundling
 >- [webpack] - using [babel] to parse JSX
 
@@ -76,6 +79,7 @@ $ npm run clean
 
 ## To-dos
 
+- Add a base sass structure
 - Implement Jest for testing purposes
 - Improve both ESLint and Webpack configuration
 
@@ -101,6 +105,7 @@ Based on [react-base], from Thiago L. Lima.
 [extension]: <https://github.com/zalmoxisus/redux-devtools-extension>
 [redux-saga]: <https://redux-saga.js.org/>
 [axios]: <https://github.com/axios/axios>
+[sass]: <https://sass-lang.com/>
 [webpack]: <https://webpack.js.org/>
 [babel]: <https://babeljs.io/>
 [eslint]: <https://eslint.org/>
