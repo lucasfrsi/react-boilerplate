@@ -83,6 +83,10 @@ $ npm run clean
 
 Feel free to contribute and open pull requests or issues.
 
+## Credits
+
+Based on [react-base], from Thiago L. Lima.
+
 ## License
 
 [MIT]
@@ -101,5 +105,7 @@ Feel free to contribute and open pull requests or issues.
 [babel]: <https://babeljs.io/>
 [eslint]: <https://eslint.org/>
 [Airbnb]: <https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb>
+
+[react-base]: <https://github.com/tlima/react-base>
 
 [MIT]: <https://github.com/lucasfrsi/react-boilerplate/blob/master/LICENSE>
