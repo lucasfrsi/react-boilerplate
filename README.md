@@ -79,11 +79,20 @@ $ npm run clean
 
 ## To-dos
 
+### High Priority
+
 - Create a Sass folder and file structure
+- Use Request / Success / Error pattern in Redux Saga
+- Rearrange overall folder structure and then add a back-end boilerplate code as well
+
+### Medium Priority
+
 - Add browser support config to Babel
 - Restructure the components / pages
-- Use Request / Success / Error pattern in Redux Saga
 - Implement Jest for testing purposes
+
+### Low Priority
+
 - Improve both ESLint and Webpack configuration
 
 ## Contributing
