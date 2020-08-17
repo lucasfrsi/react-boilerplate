@@ -79,7 +79,10 @@ $ npm run clean
 
 ## To-dos
 
-- Add a base sass structure
+- Create a Sass folder and file structure
+- Add browser support config to Babel
+- Restructure the components / pages
+- Use Request / Success / Error pattern in Redux Saga
 - Implement Jest for testing purposes
 - Improve both ESLint and Webpack configuration
 
