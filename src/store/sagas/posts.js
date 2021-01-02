@@ -1,6 +1,22 @@
-import { takeEvery, takeLatest, call, put, fork, take } from 'redux-saga/effects';
-import { GET_POSTS_REQUEST, DELETE_POST_REQUEST, CREATE_POST_REQUEST } from '../actions/types';
-import { getPostsSuccessAction, postsErrorAction } from '../actions/posts';
+import {
+  takeEvery,
+  takeLatest,
+  call,
+  put,
+  fork,
+  take,
+} from 'redux-saga/effects';
+
+import {
+  GET_POSTS_REQUEST,
+  DELETE_POST_REQUEST,
+  CREATE_POST_REQUEST,
+} from '../actions/types';
+
+import {
+  getPostsSuccessAction,
+  postsErrorAction,
+} from '../actions/posts';
 import * as api from '../../services/api/posts';
 
 // GET POSTS

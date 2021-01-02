@@ -1,5 +1,11 @@
 import { GET_POSTS_REQUEST, GET_POSTS_SUCCESS, DELETE_POST_REQUEST, CREATE_POST_REQUEST, POSTS_ERROR } from './types';
 
+// REQUESTS
+// Sagas always listen to requests actions
+
+// SUCCESS AND ERROR
+// Both success and error actions go directly to reducers
+
 export const getPostsRequestAction = () => ({
   type: GET_POSTS_REQUEST,
 });
