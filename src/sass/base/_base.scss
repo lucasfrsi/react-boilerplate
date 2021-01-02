@@ -1,0 +1,28 @@
+@use '../abstracts/members.scss' as *;
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; // 1 rem = 10px -> 10px/16px = 62.5%
+}
+
+body {
+  // background-image: linear-gradient(to right bottom, $c-primary-l, $c-primary-d);
+  // background-size: cover;
+  // background-repeat: no-repeat;
+
+  min-height: 100vh;
+}
+
+// Highlight color
+// ::selection {
+//   background-color: $c-primary;
+//   color: $c-white;
+// }
