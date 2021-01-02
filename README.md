@@ -5,25 +5,25 @@ This project is meant to be used as a boilerplate code for web projects based on
 ## Technologies and Libraries
 
 ### UI and Navigation
->- [react]
->- [react-router-dom]
+- [react]
+- [react-router-dom]
 
 ### State Management and Side-Effects
->- [redux] - pre-configured to use Redux DevTools [extension]. You **must** install it for it to work.
->- [redux-saga]
+- [redux] - pre-configured to use Redux DevTools [extension]. You **must** install it for it to work.
+- [redux-saga]
 
 
 ### HTTP Requests
->- [axios]
+- [axios]
 
 ### Styling
->- [sass]
+- [sass]
 
 ### Minification, Compression and Bundling
->- [webpack] - using [babel] to parse JSX
+- [webpack] - using [babel] to parse JSX
 
 ### Linting
->- [eslint] - based on [Airbnb]
+- [eslint] - based on [Airbnb]
 
 ## Installation
 
@@ -83,7 +83,6 @@ $ npm run clean
 
 - [x] Create a Sass folder and file structure
 - [ ] Use Request / Success / Error pattern in Redux Saga
-- [ ] Rearrange overall folder structure and then add a back-end boilerplate code as well
 
 ### Medium Priority
 
