@@ -1,13 +1,13 @@
 /* eslint-disable */
 const path = require('path');
-const webpack = require('webpack');
+const webpack = require('webpack'); // not needed anymore
 
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CompressionPlugin = require('compression-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // ok
+const HtmlWebpackPlugin = require('html-webpack-plugin'); // ok
+const CompressionPlugin = require('compression-webpack-plugin'); // ok
+const { CleanWebpackPlugin } = require('clean-webpack-plugin'); // not needed anymore
+const TerserPlugin = require('terser-webpack-plugin'); // not needed anymore
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin'); // changed to css minimizer
 
 const isDevelopment = process.env.NODE_ENV !== 'production';
 

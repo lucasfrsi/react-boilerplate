@@ -1,43 +1,77 @@
-// Modules
+/* eslint-disable global-require */
 const path = require('path');
+const webpack = require('webpack');
 
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
 
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
-module.exports = {
+const config = {
   mode: isDevelopment ? 'development' : 'production',
-  // Entry: indicates which module webpack should use to begin building out
-  // Running path.join method for a normalized resulting path
+
   entry: path.join(__dirname, 'src', 'index.jsx'),
-  // Output: tells webpack where to emit the bundles it creates and how to name these files
+
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: '[name].[contenthash].js',
     publicPath: '/',
+    filename: '[name].[contenthash].js',
+    chunkFilename: 'chunks/[contenthash].js',
+    assetModuleFilename: 'images/[contenthash:8][ext]',
     clean: true,
-    assetModuleFilename: 'images/[contenthash:8].[ext]',
   },
-  // Loaders: allow webpack to process other types of files and convert them into valid modules
-  // Loaders are evaluated from right to left (bottom to top)
+
   module: {
     rules: [
-      // Best practices:
-      // - Use RegExp only in test and for filename matching
-      // - Use arrays of absolute paths in include and exclude to match the full path
-      // - Try to avoid exclude and prefer include
       {
-        // CONDITIONS ===
-        // test: /\.jsx?$/
-        // include: path.join(__dirname, 'src', 'assets'),
-        // exclude: /node_modules/,
-        // ACTIONS ===
-        // use: [{
-        //   loader: '',
-        //   options: {
-        //     // ...
-        //   },
-        // }],
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: 'babel-loader',
+      },
+      {
+        test: /\.s[ac]ss$/i,
+        use: [
+          isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 2,
+              modules: {
+                localIdentName: '[local]_[hash:base64:6]',
+              },
+            },
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                plugins: [
+                  'postcss-flexbugs-fixes',
+                  [
+                    'postcss-preset-env',
+                    {
+                      autoprefixer: {
+                        flexbox: 'no-2009',
+                      },
+                      stage: 3,
+                    },
+                  ],
+                ],
+              },
+            },
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              implementation: require('sass'),
+              sassOptions: {
+                fiber: require('fibers'),
+              },
+            },
+          },
+        ],
       },
       {
         test: /\.(png|jpg|jpeg|gif|svg)$/i,
@@ -45,23 +79,22 @@ module.exports = {
       },
     ],
   },
-  // Options for resolving module requests (does not apply to resolving of loaders)
+
   resolve: {
     alias: {
       assets: path.join(__dirname, 'src', 'assets'),
+      components: path.join(__dirname, 'src', 'components'),
+      lib: path.join(__dirname, 'src', 'lib'),
+      pages: path.join(__dirname, 'src', 'pages'),
+      sass: path.join(__dirname, 'src', 'sass'),
+      services: path.join(__dirname, 'src', 'services'),
+      store: path.join(__dirname, 'src', 'store'),
     },
     extensions: ['.js', '.jsx', '.scss'],
-    // Set to false to avoid causing module resolution to fail when using tools
-    // that symlink packages
     symlinks: false,
+    // Avoid causing module resolution to fail when using tools that symlink packages
   },
-  devServer: {
-    contentBase: './dist',
-    compress: true,
-    historyApiFallback: true,
-    hot: true,
-  },
-  devtool: 'eval-source-map',
+
   optimization: {
     runtimeChunk: 'single',
     moduleIds: 'deterministic',
@@ -74,19 +107,12 @@ module.exports = {
         },
       },
     },
-    // minimizer: [
-    //   new TerserPlugin({
-    //     parallel: true,
-    //     sourceMap: true, // Must be set to true if using source-maps in production
-    //     terserOptions: {
-    //       // https://github.com/webpack-contrib/terser-webpack-plugin#terseroptions
-    //     },
-    //   }),
-    // ],
+    minimizer: [
+      '...',
+      new CssMinimizerPlugin(),
+    ],
   },
-  // Plugins: used to perform a wider range of tasks.
-  // They serve the purpose of doing anything else that a loader cannot do.
-  // Since plugins can take args/options, we must pass a 'new' instance to the plugins property
+
   plugins: [
     new HtmlWebpackPlugin({
       title: 'React Boilerplate v1.0.1',
@@ -97,21 +123,38 @@ module.exports = {
       },
       favicon: path.join(__dirname, 'src', 'assets', 'favicon.png'),
     }),
+    new CompressionPlugin(),
+    new webpack.DefinePlugin({ __webpack_devmode__: isDevelopment }),
   ],
 };
 
-// Check config against CREATE REACT APP?
-// Browserslist
+if (isDevelopment) {
+  // This is a workaround, check notes[2]
+  config.target = 'web';
 
-// WHAT IS DEV AND WHAT IS PROD
-// Hot Module Replacement (import is not needed anymore)
+  config.devServer = {
+    contentBase: './dist',
+    hot: true,
+    clientLogLevel: 'silent',
+    historyApiFallback: true,
+    compress: true,
+  };
 
-// "start": "webpack-cli serve --config ./webpack.config.js --progress",
-// "build": "npm run lint && cross-env NODE_ENV=production webpack --config webpack.config.js",
-// Try removing cross-env and using webpack --node-env instead
+  config.devtool = 'eval-source-map';
+} else {
+  config.target = 'browserslist';
 
-// Check in the future: PWA, Progressive Web Application
-// Experience similar to native apps, like to function when offline.
-// + Service Workers | Workbox
+  config.plugins.push(new MiniCssExtractPlugin({
+    filename: '[name].[contenthash].css',
+    chunkFilename: '[id].[contenthash].css',
+  }));
+}
 
-// REMOVE FILE LOADER (using asset modules now)
+module.exports = config;
+
+// NOTES ==
+// 1. Watch for React Fast Refresh definite release
+// 2. About the target config:
+// Browserslist is the default, however it breaks page refresh on changes
+// Fix: watch for webpack-dev-server next release with a fix (4+)
+// 3.
