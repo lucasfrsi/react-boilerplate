@@ -4,9 +4,9 @@
   "description": "React boilerplate for modern web projects.",
   "main": "src/index.jsx",
   "scripts": {
-    "start": "webpack-cli serve --config ./webpack.config.js --mode development",
-    "build": "npm run lint && cross-env NODE_ENV=production webpack --config webpack.config.js --mode production",
-    "build:nocheck": "cross-env NODE_ENV=production webpack --config webpack.config.js --mode production",
+    "start": "webpack-cli serve --config ./webpack.config.js --progress",
+    "build": "npm run lint && cross-env NODE_ENV=production webpack --config webpack.config.js",
+    "build:nocheck": "cross-env NODE_ENV=production webpack --config webpack.config.js",
     "serve": "http-server ./dist -g",
     "clean": "rm -rf node_modules",
     "lint": "eslint \"**/*.{js,jsx}\""
