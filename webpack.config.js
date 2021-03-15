@@ -115,11 +115,9 @@ const config = {
 
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'React Boilerplate v1.0.1',
+      title: 'React Boilerplate v2',
       meta: {
         viewport: 'width=device-width, initial-scale=1',
-        'application-name': 'Application Name',
-        description: 'description of the page',
       },
       favicon: path.join(__dirname, 'src', 'assets', 'favicon.png'),
     }),
