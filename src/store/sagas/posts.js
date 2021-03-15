@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import {
   takeEvery,
   takeLatest,
@@ -9,25 +10,30 @@ import {
 
 import {
   GET_POSTS_REQUEST,
-  DELETE_POST_REQUEST,
   CREATE_POST_REQUEST,
+  DELETE_POST_REQUEST,
 } from '../actions/types';
 
 import {
   getPostsSuccessAction,
-  postsErrorAction,
+  getPostsErrorAction,
+  createPostSuccessAction,
+  createPostErrorAction,
+  deletePostSuccessAction,
+  deletePostErrorAction,
 } from '../actions/posts';
+
 import * as api from '../../services/api/posts';
 
 // GET POSTS
 function* getPosts() {
   try {
     const response = yield call(api.getPosts);
-    // eslint-disable-next-line no-console
+    yield put(getPostsSuccessAction(response.data, 'Success on getting posts.'));
     console.log('[GET POSTS SAGA - API RESPONSE]', response);
-    yield put(getPostsSuccessAction(response.data));
   } catch (error) {
-    yield put(postsErrorAction('An error occurred when trying to get all the posts.'));
+    yield put(getPostsErrorAction('An error occurred when trying to get all the posts.'));
+    console.log(error);
   }
 }
 
@@ -37,16 +43,19 @@ function* watchGetPostsRequest() {
 
 // CREATE POST
 function* createPost(action) {
+  const { payload } = action;
+
   try {
     const response = yield call(api.createPost, {
-      title: action.payload.title,
-      body: action.payload.body,
+      title: payload.title,
+      body: payload.body,
     });
-    // eslint-disable-next-line no-console
+    yield put(createPostSuccessAction('Success on creating post.'));
     console.log('[CREATE POST SAGA - API RESPONSE]', response);
-    yield call(getPosts);
+    // yield call(getPosts);
   } catch (error) {
-    yield put(postsErrorAction('An error occurred when trying to create the post.'));
+    yield put(createPostErrorAction('An error occurred when trying to create the post.'));
+    console.log(error);
   }
 }
 
@@ -58,11 +67,12 @@ function* watchCreatePostRequest() {
 function* deletePost(postId) {
   try {
     const response = yield call(api.deletePost, postId);
-    // eslint-disable-next-line no-console
+    yield put(deletePostSuccessAction('Success on deleting post.'));
     console.log('[DELETE POST SAGA - API RESPONSE]', response);
-    yield call(getPosts);
+    // yield call(getPosts);
   } catch (error) {
-    yield put(postsErrorAction('An error occurred when trying to delete the post.'));
+    yield put(deletePostErrorAction('An error occurred when trying to delete this post.'));
+    console.log(error);
   }
 }
 
@@ -76,8 +86,8 @@ function* watchDeletePostRequest() {
 // WATCHERS EXPORT
 const postsSagas = [
   fork(watchGetPostsRequest),
-  fork(watchDeletePostRequest),
   fork(watchCreatePostRequest),
+  fork(watchDeletePostRequest),
 ];
 
 export default postsSagas;

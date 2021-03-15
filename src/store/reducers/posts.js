@@ -1,11 +1,15 @@
 import {
   GET_POSTS_SUCCESS,
-  POSTS_ERROR,
+  GET_POSTS_ERROR,
+  CREATE_POST_SUCCESS,
+  CREATE_POST_ERROR,
+  DELETE_POST_SUCCESS,
+  DELETE_POST_ERROR,
 } from '../actions/types';
 
 const initialState = {
   postsList: [],
-  error: '',
+  status: '',
 };
 
 const postsReducer = (state = initialState, action) => {
@@ -14,15 +18,21 @@ const postsReducer = (state = initialState, action) => {
   switch (type) {
     case GET_POSTS_SUCCESS:
       return {
-        ...state,
         postsList: payload.posts,
+        status: payload.success,
       };
-    case POSTS_ERROR:
-      // eslint-disable-next-line no-console
-      console.log('[POSTS_ERROR REDUCER - MESSAGE COMING FROM SAGA]', payload.error);
+    case CREATE_POST_SUCCESS:
+    case DELETE_POST_SUCCESS:
       return {
         ...state,
-        error: payload.error,
+        status: payload.success,
+      };
+    case GET_POSTS_ERROR:
+    case CREATE_POST_ERROR:
+    case DELETE_POST_ERROR:
+      return {
+        ...state,
+        status: payload.error,
       };
     default:
       return state;

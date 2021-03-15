@@ -1,6 +1,7 @@
 .form {
-  margin: 5% auto 2%;
+  margin: 0 auto 2.5rem;
   width: 55%;
+  max-width: 50rem;
   text-align: left;
 
   label {
@@ -8,7 +9,8 @@
     color: #555;
   }
 
-  input, textarea {
+  input,
+  textarea {
     box-sizing: border-box;
     margin: 2% 0;
     text-align: left;
@@ -21,30 +23,31 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 1%;
-    box-shadow: 0px 3px 2px #999;
+    box-shadow: 0 3px 2px #999;
     color: #555;
-  }
-
-  button {
-    outline: none;
-    font-size: 1.2rem;
-    color: #85d842;
-    background-color: #fff;
-    border: 1px solid #85d842;
-    border-radius: 5px;
-    padding: 7px 12px;
-    transition: all 0.2s ease-in-out;
-
-    &:hover {
-      color: #fff;
-      background-color: #85d842;
-      border: 1px solid #85d842;
-    }
   }
 
   @media (max-width: 450px) {
     width: 80%;
     padding: 2%;
     margin: 5% auto;
+  }
+}
+
+.form button {
+  cursor: pointer;
+  outline: none;
+  font-size: 1.2rem;
+  color: #85d842;
+  background-color: #fff;
+  border: 1px solid #85d842;
+  border-radius: 5px;
+  padding: 7px 12px;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    color: #fff;
+    background-color: #85d842;
+    border: 1px solid #85d842;
   }
 }
