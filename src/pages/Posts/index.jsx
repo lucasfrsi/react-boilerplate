@@ -26,6 +26,8 @@ const Posts = () => {
       <h1>POSTS</h1>
       <NewPostForm />
       <hr />
+      <h2>Status: <span className={styles.status}>{posts.status}</span></h2>
+      <hr />
       {posts.postsList.map((post) => (
         <div key={post.id} className={styles.card}>
           <h2>{post.title}</h2>
