@@ -1,6 +1,7 @@
 .form {
-  margin: 5% auto 2%;
+  margin: 0 auto 2.5rem;
   width: 55%;
+  max-width: 50rem;
   text-align: left;
 
   label {
@@ -34,6 +35,7 @@
 }
 
 .form button {
+  cursor: pointer;
   outline: none;
   font-size: 1.2rem;
   color: #85d842;
