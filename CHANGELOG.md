@@ -17,7 +17,7 @@ No changes made yet. Check the to-dos section in [README.md] for more informatio
 - `css-minimizer-webpack-plugin` as a substitute for optimize-css-assets-webpack-plugin
 - webpack `asset modules/resource` as a substitute for file-loader
 - `postcss`, `postcss loader`, `postcss-preset-env` and `postcss-flexbugs-fixes` to allow  converting modern CSS into something most browsers can understand, determining the polyfills based on target browsers (browserslist) plus autoprefixing and flexbox fixes
-- webpack `output.clean`: true as a substitute for clean-webpack-plugin
+- webpack `output.clean: true` as a substitute for clean-webpack-plugin
 - webpack `resolve aliases` to avoid path hell
 - webpack `resolve symlinks: false` to avoid causing module resolution to fail when using tools that symlink packages
 - webpack `optimization.runtimechunk: 'single'` in case of multiple entry points on a single html page, and to avoid [trouble](https://bundlers.tooling.report/code-splitting/multi-entry/)
