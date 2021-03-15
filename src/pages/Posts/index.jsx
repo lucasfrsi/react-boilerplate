@@ -1,14 +1,17 @@
 import React, { useEffect, useCallback } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { getPostsRequestAction, deletePostRequestAction } from '../../store/actions/posts';
 
 import NewPostForm from '../../components/NewPostForm';
 
 import styles from './style.scss';
 
-const Posts = ({ posts, getPostsRequest, deletePostRequest }) => {
-  const onGetPostsRequest = useCallback(() => getPostsRequest(), [getPostsRequest]);
+const Posts = () => {
+  const posts = useSelector((state) => state.posts);
+  const dispatch = useDispatch();
+
+  const onGetPostsRequest = useCallback(() => dispatch(getPostsRequestAction()), [dispatch]);
+  const deletePostRequest = useCallback(() => dispatch(deletePostRequestAction()), [dispatch]);
 
   useEffect(() => {
     onGetPostsRequest();
@@ -34,29 +37,4 @@ const Posts = ({ posts, getPostsRequest, deletePostRequest }) => {
   );
 };
 
-Posts.propTypes = {
-  posts: PropTypes.shape({
-    postsList: PropTypes.arrayOf(
-      PropTypes.shape({
-        userId: PropTypes.number,
-        id: PropTypes.number,
-        title: PropTypes.string,
-        body: PropTypes.string,
-      }),
-    ),
-    error: PropTypes.string,
-  }).isRequired,
-  getPostsRequest: PropTypes.func.isRequired,
-  deletePostRequest: PropTypes.func.isRequired,
-};
-
-const mapStateToProps = (state) => ({
-  posts: state.posts,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  getPostsRequest: () => dispatch(getPostsRequestAction()),
-  deletePostRequest: (postId) => dispatch(deletePostRequestAction(postId)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Posts);
+export default Posts;

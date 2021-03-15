@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { createPostRequestAction } from '../../store/actions/posts';
 
 import styles from './style.scss';
 
-const NewPostForm = ({ onSubmit }) => {
+const NewPostForm = () => {
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
 
+  const dispatch = useDispatch();
+  const createPostRequest = (t, b) => dispatch(createPostRequestAction(t, b));
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    onSubmit(title, body);
+    createPostRequest(title, body);
     setTitle('');
     setBody('');
   };
@@ -36,12 +38,4 @@ const NewPostForm = ({ onSubmit }) => {
   );
 };
 
-NewPostForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-};
-
-const mapDispatchToProps = (dispatch) => ({
-  onSubmit: (title, body) => dispatch(createPostRequestAction(title, body)),
-});
-
-export default connect(null, mapDispatchToProps)(NewPostForm);
+export default NewPostForm;
