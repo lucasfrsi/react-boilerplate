@@ -1,6 +1,6 @@
 # react-boilerplate
 
-This project is meant to be used as a boilerplate code for web projects based on React. It comes with an opinionated base folder structure and all libraries pre-configured.
+This project is meant to be used as a boilerplate code for web projects based on React. It comes with an opinionated base folder structure and all libraries and webpack pre-configured.
 
 ## Technologies and Libraries
 
@@ -9,21 +9,26 @@ This project is meant to be used as a boilerplate code for web projects based on
 - [react-router-dom]
 
 ### State Management and Side-Effects
-- [redux] - pre-configured to use Redux DevTools [extension]. You **must** install it for it to work.
+- [redux]
+  - Pre-configured to use Redux DevTools [extension] (you **must** install it for it to work) and [redux-logger].
 - [redux-saga]
-
 
 ### HTTP Requests
 - [axios]
 
 ### Styling
 - [sass]
+  - [PostCSS] configured with [postcss-preset-env] to support modern CSS and autoprefixing based on targeted browsers.
 
 ### Minification, Compression and Bundling
 - [webpack] - using [babel] to parse JSX
 
 ### Linting
 - [eslint] - based on [Airbnb]
+- [stylelint] - based on [sass-guidelines]
+
+### Browser Support
+- Change the **browserslist** config inside **package.json** according to your needs. Both Babel and PostCSS will take care of polyfills and autoprefixing.
 
 ## Installation
 
@@ -36,7 +41,7 @@ $ npm install
 
 ### Development
 
-Run the project locally.
+Run the project locally by using **webpack-dev-server**, also providing live reloading.
 
 ```sh
 $ npm start
@@ -65,13 +70,24 @@ $ npm run serve
 
 ### Utilities
 
-#### Linting
+**Linting**
+
+Running the following command will run both eslint and stylelint.
 
 ```sh
 $ npm run lint
 ```
 
-#### Delete node_modules (*This script won't work on Windows*)
+You can also run them separately
+
+```sh
+$ npm run eslint
+$ npm run stylelint
+```
+
+**Clean**
+
+Delete **node_modules** and **dist** folder (*This script won't work on Windows*)
 
 ```sh
 $ npm run clean
@@ -79,20 +95,8 @@ $ npm run clean
 
 ## To-dos
 
-### High Priority
-
-- [x] Create a Sass folder and file structure
-- [ ] Use Request / Success / Error pattern in Redux Saga
-
-### Medium Priority
-
-- [ ] Add browser support config to Babel
-- [ ] Restructure the components / pages
 - [ ] Implement Jest for testing purposes
 
-### Low Priority
-
-- [ ]  Improve both ESLint and Webpack configuration
 
 ## Contributing
 
@@ -113,13 +117,18 @@ Based on [react-base], from Thiago L. Lima.
 [react]: <https://reactjs.org/>
 [react-router-dom]: <https://reactrouter.com/web>
 [redux]: <https://redux.js.org/>
+[redux-logger]: <https://github.com/LogRocket/redux-logger>
 [extension]: <https://github.com/zalmoxisus/redux-devtools-extension>
 [redux-saga]: <https://redux-saga.js.org/>
 [axios]: <https://github.com/axios/axios>
 [sass]: <https://sass-lang.com/>
+[PostCSS]: <https://github.com/postcss/postcss>
+[postcss-preset-env]: <https://github.com/csstools/postcss-preset-env>
 [webpack]: <https://webpack.js.org/>
 [babel]: <https://babeljs.io/>
 [eslint]: <https://eslint.org/>
+[stylelint]: <https://github.com/stylelint/stylelint>
+[sass-guidelines]: <https://github.com/bjankord/stylelint-config-sass-guidelines>
 [Airbnb]: <https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb>
 
 [react-base]: <https://github.com/tlima/react-base>
