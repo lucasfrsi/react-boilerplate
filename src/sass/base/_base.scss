@@ -26,3 +26,30 @@ body {
 //   background-color: $c-primary;
 //   color: $c-white;
 // }
+
+// Scrollbar
+// ::-webkit-scrollbar {
+//   width: 0.5rem;
+// }
+
+// /* Track */
+// ::-webkit-scrollbar-track {
+//   background-color: rgba(#3f392b, 0.2);
+//   border-radius: 0.5rem;
+// }
+
+// /* Handle */
+// ::-webkit-scrollbar-thumb {
+//   border-radius: 0.5rem;
+//   background-color: rgba($c-primary, 0.3); 
+// }
+
+// // &:hover::-webkit-scrollbar-track
+// ::-webkit-scrollbar-track:hover {
+//   background-color: rgba(#3f392b, 0.3);
+// }
+
+// // &:hover::-webkit-scrollbar-thumb
+// ::-webkit-scrollbar-thumb:hover {
+//   background-color: rgba($c-primary, 0.6); 
+// }
