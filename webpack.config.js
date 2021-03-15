@@ -144,7 +144,7 @@ if (isDevelopment) {
 
   config.plugins.push(new MiniCssExtractPlugin({
     filename: '[name].[contenthash].css',
-    chunkFilename: '[id].[contenthash].css',
+    chunkFilename: 'chunks/[id].[contenthash].css',
   }));
 }
 
