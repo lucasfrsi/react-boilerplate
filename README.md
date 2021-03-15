@@ -96,7 +96,8 @@ $ npm run clean
 ## To-dos
 
 - [ ] Implement Jest for testing purposes
-
+- [ ] Implement React Refresh and its webpack plugin (currently waiting for a  non-experimental release)
+- [ ] Browserslist is the default for webpack target, however it currently breaks page refresh on changes. This is an issue with webpack-dev-server that should be fixed in future releases (v4+)
 
 ## Contributing
 
