@@ -92,7 +92,6 @@ const config = {
     },
     extensions: ['.js', '.jsx', '.scss'],
     symlinks: false,
-    // Avoid causing module resolution to fail when using tools that symlink packages
   },
 
   optimization: {
@@ -115,7 +114,7 @@ const config = {
 
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'React Boilerplate v2',
+      title: 'React Boilerplate v1.0.0',
       meta: {
         viewport: 'width=device-width, initial-scale=1',
       },
@@ -127,7 +126,6 @@ const config = {
 };
 
 if (isDevelopment) {
-  // This is a workaround, check notes[2]
   config.target = 'web';
 
   config.devServer = {
@@ -149,10 +147,3 @@ if (isDevelopment) {
 }
 
 module.exports = config;
-
-// NOTES ==
-// 1. Watch for React Fast Refresh definite release
-// 2. About the target config:
-// Browserslist is the default, however it breaks page refresh on changes
-// Fix: watch for webpack-dev-server next release with a fix (4+)
-// 3.
