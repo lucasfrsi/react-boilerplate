@@ -1,8 +1,15 @@
+/* eslint-disable camelcase */
 import React from 'react';
-import HomeComponent from '../../components/Home';
+
+import reactlogo from 'assets/react-logo.svg';
+import styles from './style.scss';
 
 const Home = () => (
-  <HomeComponent />
+  <div className={styles.home}>
+    <h1>REACT BOILERPLATE v2.0</h1>
+    <h2><b>Mode:</b> {__webpack_devmode__ ? 'Development' : 'Production'}</h2>
+    <img src={reactlogo} alt="react logo" />
+  </div>
 );
 
 export default Home;
