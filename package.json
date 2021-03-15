@@ -1,7 +1,7 @@
 {
   "name": "react-boilerplate",
   "version": "2.0.0",
-  "description": "React boilerplate for modern web projects.",
+  "description": "React boilerplate template for web projects.",
   "main": "src/index.jsx",
   "scripts": {
     "start": "webpack serve --config ./webpack.config.js --progress",
@@ -10,7 +10,7 @@
     "serve": "http-server ./dist -g",
     "clean": "rm -rf node_modules && rm -rf dist",
     "eslint": "eslint --ext .jsx,.js ./",
-    "stylelint": "stylelint './src/**/*.scss'",
+    "stylelint": "stylelint ./src/**/*.scss",
     "lint": "npm run eslint && npm run stylelint"
   },
   "repository": {
@@ -19,13 +19,18 @@
   },
   "keywords": [
     "axios",
+    "babel",
     "boilerplate",
-    "jsx",
+    "browserslist",
+    "eslint",
     "prop-types",
     "react",
     "redux",
+    "redux-logger",
     "redux-saga",
     "router",
+    "sass",
+    "stylelint",
     "webpack"
   ],
   "author": "Lucas F. Simoni",

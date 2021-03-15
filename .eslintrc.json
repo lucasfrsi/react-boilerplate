@@ -1,25 +1,25 @@
 {
+  "extends": [
+    "airbnb",
+    "airbnb/hooks",
+    "plugin:react/recommended"
+  ],
 	"env": {
 		"browser": true,
-    "es2020": true,
+    "es2021": true,
     "jest": true
 	},
-	"extends": [
-    "airbnb",
-		"airbnb/hooks",
-		"plugin:react/recommended"
-	],
-	"globals": {
-		"__webpack_hash__": "readonly",
+  "globals": {
+    "__webpack_hash__": "readonly",
     "__webpack_devmode__": "readonly"
-	},
-	"parserOptions": {
-		"ecmaFeatures": {
-			"jsx": true
-		},
-		"ecmaVersion": 11,
-		"sourceType": "module"
-	},
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
 	"plugins": [
 		"react"
 	],
