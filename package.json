@@ -110,7 +110,7 @@
       "src/**/*.{js,jsx}"
     ],
     "setupFilesAfterEnv": [
-      "<rootDir>/setupTests.js"
+      "@testing-library/jest-dom"
     ],
     "moduleFileExtensions": [
       "js",
