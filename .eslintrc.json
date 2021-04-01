@@ -35,14 +35,6 @@
     "react/jsx-one-expression-per-line": 0,
     "object-curly-newline": 0,
     "max-len": ["error", { "code": 160 }],
-    "import/prefer-default-export": ["off"],
-    "import/no-extraneous-dependencies": [
-      "error",
-      {
-        "devDependencies": [
-          "**/*.test.{js,jsx}"
-        ]
-      }
-    ]
+    "import/prefer-default-export": ["off"]
 	}
 }
