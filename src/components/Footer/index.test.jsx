@@ -12,12 +12,12 @@ describe('Test App', () => {
   const rootReducer = combineReducers({
     counter: counterReducer,
   });
-  const counterStore = createStore(rootReducer, {
-    counter: 0,
-  });
 
   const renderFooter = () => render(
-    <Provider store={counterStore}>
+    <Provider store={createStore(rootReducer, {
+      counter: 0,
+    })}
+    >
       <Footer />
     </Provider>,
   );
@@ -53,7 +53,7 @@ describe('Test App', () => {
     // Act
     userEvent.click(subButton);
     // Assert
-    expect(counter).toHaveTextContent(/^0$/);
+    expect(counter).toHaveTextContent(/^-1$/);
   });
 
   test('resets counter', () => {
