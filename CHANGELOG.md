@@ -4,7 +4,30 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-No changes made yet. Check the to-dos section in [README.md] for more information of what's to come.
+### Added
+- Testing environment, along with the following libraries:
+  - `jest`, as the core testing framework
+  - `@testing-library/react` to provide utilities to facilitate querying the DOM in the same way a user would. It is built on top of DOM Testing Library which is where most of the logic behind the queries is
+  - `@testing-library/jest-dom` extending jest by providing custom jest matchers that makes tests more declarative, clear to read and to maintain
+  - `@testing-library/user-event` to simulate the real events that would happen in the browser as the user interacts with it
+  - `identity-obj-proxy` to allow className lookups on the styles object to be returned as-is (e.g., `styles.foobar === 'foobar'`)
+- `jest` configuration in `package.json`
+- New scripts:
+  - `"test": "jest --verbose"`
+  - `"test:watch": "jest --verbose --watch"`
+  - `"validate": "npm run lint && npm run test"`
+- New package keywords: `jest` and `testing-library`
+
+### Changed
+- Scripts:
+  - From `"build": "npm run lint ..."` to `"build": "npm run validate ..."`
+- `.eslintrc.json` rules to get no errors when importing dev dependencies in test files
+- `jsconfig.json` to allow jest autocompletion
+
+### Removed
+- Build hash in `Footer` component
+
+<!-- No changes made yet. Check the to-dos section in [README.md] for more information of what's to come. -->
 
 ## [1.0.0] (2021-03-15)
 
