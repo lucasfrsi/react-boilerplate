@@ -12,7 +12,9 @@ describe('Test App', () => {
   const rootReducer = combineReducers({
     counter: counterReducer,
   });
-  const counterStore = createStore(rootReducer, 0);
+  const counterStore = createStore(rootReducer, {
+    counter: 0,
+  });
 
   const renderFooter = () => render(
     <Provider store={counterStore}>
