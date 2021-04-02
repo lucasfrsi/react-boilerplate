@@ -8,6 +8,10 @@ This project is meant to be used as a boilerplate code for web projects based on
 - [react]
 - [react-router-dom]
 
+### Styling
+- [sass]
+  - [PostCSS] configured with [postcss-preset-env] to support modern CSS and autoprefixing based on targeted browsers.
+
 ### State Management and Side-Effects
 - [redux]
   - Pre-configured to use Redux DevTools [extension] (you **must** install it for it to work) and [redux-logger].
@@ -16,16 +20,16 @@ This project is meant to be used as a boilerplate code for web projects based on
 ### HTTP Requests
 - [axios]
 
-### Styling
-- [sass]
-  - [PostCSS] configured with [postcss-preset-env] to support modern CSS and autoprefixing based on targeted browsers.
-
 ### Minification, Compression and Bundling
-- [webpack] - using [babel] to parse JSX
+- [webpack]
 
 ### Linting
 - [eslint] - based on [Airbnb]
 - [stylelint] - based on [sass-guidelines]
+
+### Testing
+- [jest]
+- [@testing-library/react]
 
 ### Browser Support
 - Change the **browserslist** config inside **package.json** according to your needs. Both Babel and PostCSS will take care of polyfills and autoprefixing.
@@ -49,13 +53,13 @@ $ npm start
 
 ### Building
 
-Create a **dist** directory with the production build of the app, ready for deployment. By default it runs the lint script right before building.
+Create a **dist** directory with the production build of the app, ready for deployment. By default it runs the validate script right before building.
 
 ```sh
 $ npm run build
 ```
 
-Run the building script without linting.
+Run the building script without validating the project.
 
 ```sh
 $ npm run build:nocheck
@@ -68,9 +72,9 @@ $ npm i http-server -g
 $ npm run serve
 ```
 
-### Utilities
+### Linting and Testing
 
-**Linting**
+**Lint**
 
 Running the following command will run both eslint and stylelint.
 
@@ -85,6 +89,30 @@ $ npm run eslint
 $ npm run stylelint
 ```
 
+**Jest**
+
+Run all tests.
+
+```sh
+$ npm test
+```
+
+Run watch mode.
+
+```sh
+$ npm run test:watch
+```
+
+**Validation**
+
+Run both test and lint scripts.
+
+```sh
+$ npm run validate
+```
+
+### Utilities
+
 **Clean**
 
 Delete **node_modules** and **dist** folder (*This script won't work on Windows*)
@@ -95,7 +123,6 @@ $ npm run clean
 
 ## To-dos
 
-- [ ] Implement Jest for testing purposes
 - [ ] Implement React Refresh and its webpack plugin (currently waiting for a  non-experimental release)
 - [ ] Browserslist is the default for webpack target, however it currently breaks page refresh on changes. This is an issue with webpack-dev-server that should be fixed in future releases (v4+)
 
@@ -131,6 +158,8 @@ Based on [react-base], from Thiago L. Lima.
 [stylelint]: <https://github.com/stylelint/stylelint>
 [sass-guidelines]: <https://github.com/bjankord/stylelint-config-sass-guidelines>
 [Airbnb]: <https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb>
+[jest]: <https://github.com/facebook/jest>
+[@testing-library/react]: <https://github.com/testing-library/react-testing-library>
 
 [react-base]: <https://github.com/tlima/react-base>
 

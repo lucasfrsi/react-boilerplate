@@ -21,7 +21,6 @@ All notable changes to this project will be documented in this file.
 ### Changed
 - Scripts:
   - From `"build": "npm run lint ..."` to `"build": "npm run validate ..."`
-- `.eslintrc.json` rules to get no errors when importing dev dependencies in test files
 - `jsconfig.json` to allow jest autocompletion
 
 ### Removed
