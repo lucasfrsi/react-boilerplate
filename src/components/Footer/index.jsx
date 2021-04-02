@@ -15,7 +15,6 @@ const CounterFooter = () => {
 
   return (
     <footer className={styles.footer}>
-      <p>Build #{__webpack_hash__}</p>
       <button className={[styles.button, styles.subtract].join(' ')} type="button" onClick={() => decreaseCount()}>-</button>
       <span role="presentation" className={styles.span} onClick={() => resetCount()}>{counter}</span>
       <button className={[styles.button, styles.add].join(' ')} type="button" onClick={() => increaseCount()}>+</button>
