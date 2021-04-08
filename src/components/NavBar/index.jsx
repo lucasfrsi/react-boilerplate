@@ -8,10 +8,6 @@ const StyledNavLink = styled(NavLink)`
   &.active {
     color: blue;
   }
-
-  &:hover {
-
-  }
 `;
 
 const NavBar = () => (
