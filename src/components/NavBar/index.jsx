@@ -1,12 +1,23 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import styled from 'styled-components';
 
-import styles from './style.scss';
+const StyledNavLink = styled(NavLink)`
+  color: red;
+
+  &.active {
+    color: blue;
+  }
+
+  &:hover {
+
+  }
+`;
 
 const NavBar = () => (
-  <div className={styles.nav}>
-    <NavLink exact to="/" className={styles.navlink} activeClassName={styles.active}>Home</NavLink>
-    <NavLink to="/posts" className={styles.navlink} activeClassName={styles.active}>Posts</NavLink>
+  <div>
+    <StyledNavLink exact to="/">Home</StyledNavLink>
+    <StyledNavLink to="/posts">Posts</StyledNavLink>
   </div>
 );
 

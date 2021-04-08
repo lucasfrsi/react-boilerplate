@@ -6,7 +6,6 @@ import { Provider } from 'react-redux';
 import appStore from './store';
 
 import Layout from './components/Layout';
-import './sass/base/main.scss';
 
 const Home = React.lazy(() => import('./pages/Home'));
 const Posts = React.lazy(() => import('./pages/Posts'));
@@ -31,6 +30,3 @@ const app = document.createElement('div');
 document.body.appendChild(app);
 
 ReactDOM.render(<App />, app);
-
-// TO-DO
-// 1. Config babel (browser target)

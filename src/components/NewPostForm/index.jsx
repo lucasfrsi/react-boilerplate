@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { createPostRequestAction } from '../../store/actions/posts';
 
-import styles from './style.scss';
-
 const NewPostForm = () => {
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
@@ -22,7 +20,7 @@ const NewPostForm = () => {
   const handleBodyChange = (event) => setBody(event.target.value);
 
   return (
-    <div className={styles.form}>
+    <div>
       <form onSubmit={handleSubmit}>
         <label htmlFor="title">
           Title

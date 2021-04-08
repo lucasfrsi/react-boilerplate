@@ -4,8 +4,6 @@ import { getPostsRequestAction, deletePostRequestAction } from '../../store/acti
 
 import NewPostForm from '../../components/NewPostForm';
 
-import styles from './style.scss';
-
 const Posts = () => {
   const posts = useSelector((state) => state.posts);
   const dispatch = useDispatch();
@@ -22,14 +20,14 @@ const Posts = () => {
   };
 
   return (
-    <div className={styles.posts}>
+    <div>
       <h1>POSTS</h1>
       <NewPostForm />
       <hr />
-      <h2>Status: <span className={styles.status}>{posts.status}</span></h2>
+      <h2>Status: <span>{posts.status}</span></h2>
       <hr />
       {posts.postsList.map((post) => (
-        <div key={post.id} className={styles.card}>
+        <div key={post.id}>
           <h2>{post.title}</h2>
           <p>{post.body}</p>
           <button type="button" onClick={() => handleDeletePostClick(post.id)}>Delete</button>

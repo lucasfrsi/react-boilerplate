@@ -1,9 +1,6 @@
-/* eslint-disable global-require */
 const path = require('path');
 const webpack = require('webpack');
 
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 
@@ -31,49 +28,6 @@ const config = {
         use: 'babel-loader',
       },
       {
-        test: /\.s[ac]ss$/i,
-        use: [
-          isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 2,
-              modules: {
-                localIdentName: '[local]_[hash:base64:6]',
-              },
-            },
-          },
-          {
-            loader: 'postcss-loader',
-            options: {
-              postcssOptions: {
-                plugins: [
-                  'postcss-flexbugs-fixes',
-                  [
-                    'postcss-preset-env',
-                    {
-                      autoprefixer: {
-                        flexbox: 'no-2009',
-                      },
-                      stage: 3,
-                    },
-                  ],
-                ],
-              },
-            },
-          },
-          {
-            loader: 'sass-loader',
-            options: {
-              implementation: require('sass'),
-              sassOptions: {
-                fiber: require('fibers'),
-              },
-            },
-          },
-        ],
-      },
-      {
         test: /\.(png|jpg|jpeg|gif|svg)$/i,
         type: 'asset/resource',
       },
@@ -86,11 +40,12 @@ const config = {
       components: path.join(__dirname, 'src', 'components'),
       lib: path.join(__dirname, 'src', 'lib'),
       pages: path.join(__dirname, 'src', 'pages'),
-      sass: path.join(__dirname, 'src', 'sass'),
       services: path.join(__dirname, 'src', 'services'),
       store: path.join(__dirname, 'src', 'store'),
+      style: path.join(__dirname, 'src', 'style'),
+      utils: path.join(__dirname, 'src', 'utils'),
     },
-    extensions: ['.js', '.jsx', '.scss'],
+    extensions: ['.js', '.jsx'],
     symlinks: false,
   },
 
@@ -106,10 +61,6 @@ const config = {
         },
       },
     },
-    minimizer: [
-      '...',
-      new CssMinimizerPlugin(),
-    ],
   },
 
   plugins: [
@@ -126,8 +77,6 @@ const config = {
 };
 
 if (isDevelopment) {
-  config.target = 'web';
-
   config.devServer = {
     contentBase: './dist',
     hot: true,
@@ -137,13 +86,10 @@ if (isDevelopment) {
   };
 
   config.devtool = 'eval-source-map';
+
+  config.target = 'web';
 } else {
   config.target = 'browserslist';
-
-  config.plugins.push(new MiniCssExtractPlugin({
-    filename: '[name].[contenthash].css',
-    chunkFilename: 'chunks/[id].[contenthash].css',
-  }));
 }
 
 module.exports = config;
