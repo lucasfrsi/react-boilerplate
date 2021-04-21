@@ -17,7 +17,7 @@ const config = {
     publicPath: '/',
     filename: '[name].[contenthash].js',
     chunkFilename: 'chunks/[contenthash].js',
-    assetModuleFilename: 'images/[contenthash:8][ext]',
+    assetModuleFilename: 'assets/[contenthash:8][ext]',
     clean: true,
   },
 
@@ -68,11 +68,7 @@ const config = {
 
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'React Boilerplate v1.0.1',
-      meta: {
-        viewport: 'width=device-width, initial-scale=1',
-      },
-      favicon: path.join(__dirname, 'src', 'assets', 'favicon.png'),
+      title: 'React Boilerplate',
     }),
     new CompressionPlugin(),
     new webpack.DefinePlugin({ __webpack_devmode__: isDevelopment }),
