@@ -1,10 +1,12 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+
+import * as styles from './style';
+import { StyledNavLink } from './style';
 
 const NavBar = () => (
-  <div>
-    <NavLink exact to="/">Home</NavLink>
-    <NavLink to="/posts">Posts</NavLink>
+  <div css={styles.navbar}>
+    <StyledNavLink exact to="/">Home</StyledNavLink>
+    <StyledNavLink to="/posts">Posts</StyledNavLink>
   </div>
 );
 
