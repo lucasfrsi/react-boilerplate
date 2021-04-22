@@ -3,6 +3,7 @@ const webpack = require('webpack');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
@@ -16,7 +17,7 @@ const config = {
     publicPath: '/',
     filename: '[name].[contenthash].js',
     chunkFilename: 'chunks/[contenthash].js',
-    assetModuleFilename: 'images/[contenthash:8][ext]',
+    assetModuleFilename: 'assets/[contenthash:8][ext]',
     clean: true,
   },
 
@@ -25,7 +26,9 @@ const config = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: 'babel-loader',
+        use: {
+          loader: 'babel-loader',
+        },
       },
       {
         test: /\.(png|jpg|jpeg|gif|svg)$/i,
@@ -65,11 +68,7 @@ const config = {
 
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'React Boilerplate v1.0.0',
-      meta: {
-        viewport: 'width=device-width, initial-scale=1',
-      },
-      favicon: path.join(__dirname, 'src', 'assets', 'favicon.png'),
+      title: 'React Boilerplate',
     }),
     new CompressionPlugin(),
     new webpack.DefinePlugin({ __webpack_devmode__: isDevelopment }),
@@ -84,6 +83,12 @@ if (isDevelopment) {
     historyApiFallback: true,
     compress: true,
   };
+
+  config.module.rules[0].use.options = {
+    plugins: ['react-refresh/babel'],
+  };
+
+  config.plugins.push(new ReactRefreshWebpackPlugin());
 
   config.devtool = 'eval-source-map';
 

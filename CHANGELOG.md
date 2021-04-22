@@ -4,29 +4,73 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+No changes made yet. Check the to-dos section in [README.md] for more information of what's to come.
+
+## [1.0.1] (2021-04-21)
+
 ### Added
-- Testing environment, along with the following libraries:
+- Testing environment, along with the following additions:
   - `jest`, as the core testing framework
   - `@testing-library/react` to provide utilities to facilitate querying the DOM in the same way a user would. It is built on top of DOM Testing Library which is where most of the logic behind the queries is
   - `@testing-library/jest-dom` extending jest by providing custom jest matchers that makes tests more declarative, clear to read and to maintain
   - `@testing-library/user-event` to simulate the real events that would happen in the browser as the user interacts with it
-  - `identity-obj-proxy` to allow className lookups on the styles object to be returned as-is (e.g., `styles.foobar === 'foobar'`)
-- `jest` configuration in `package.json`
-- New scripts:
-  - `"test": "jest --verbose"`
-  - `"test:watch": "jest --verbose --watch"`
-  - `"validate": "npm run lint && npm run test"`
-- New package keywords: `jest` and `testing-library`
+  - `jest` configuration in `package.json`
+  - Scripts:
+    - `"test": "jest --verbose"`
+    - `"test:watch": "jest --verbose --watch"`
+    - `"validate": "npm run lint && npm run test"`
+  - `package.json` keywords: `jest` and `testing-library`
+- `react-refresh` to integrate Fast Refresh, a feature that lets React components to be edited in a running application without losing their state
+- `@pmmmwh/react-refresh-webpack-plugin` to enable Fast Refresh
+- `react-helmet` as a document head manager for React, allowing better management of head tags and also helping to improve SEO, along with a `globalHelmet` file
+- `react-refresh` and `react-helmet` keywords to `package.json`
+- `private`, `bugs` and `contributors` fields to `package.json`
 
 ### Changed
-- Scripts:
-  - From `"build": "npm run lint ..."` to `"build": "npm run validate ..."`
-- `jsconfig.json` to allow jest autocompletion
+- `Sass` to `styled-components`, with the following changes:
+  - Removed:
+    - `sass` base folder and components styles
+    - `sass` from package.json keywords
+    - `Sass` dev dependencies and related:
+      - `css-loader`
+      - `css-minimizer-webpack-plugin`
+      - `fibers`
+      - `mini-css-extract-plugin`
+      - `postcss`
+      - `postcss-flexbugs-fixes`
+      - `postcss-loader`
+      - `postcss-preset-env`
+      - `sass`
+      - `sass-loader`
+      - `styled-loader`
+      - `stylelint-config-sass-guidelines`
+  - Added:
+    - `styled-components` base folder `style`, with `variables` and `globalStyle` files
+    - New styles to components
+    - `styled-components` to package.json keywords
+    - `styled-components` dependencies and related:
+      - `babel-plugin-styled-components`
+      - `jest-styled-components`
+      - `stylelint-config-styled-components`
+      - `stylelint-processor-styled-components`
+      - `styled-components`
+- `"build": "npm run lint ..."` script to `"build": "npm run validate ..."`
+- `"stylelint": "stylelint ./src/**/*.scss"` script to `"stylelint": "stylelint ./src/**/*.{js,jsx}"`
+- `.babelrc` to `.babelrc.js`, plus `babel-plugin-styled-components` configuration
+- `.stylelintrc.json` configuration, removing `stylelint-config-sass-guidelines` and addding `stylelint-processor-styled-components` and `stylelint-config-styled-components`
+- `jsconfig.json` file, removing `sass` path, adding `style` and `utils` paths and adding jest autocompletion
+- Libraries to their latest versions
+- `package.json` version to `1.0.1`
+- `webpack.config.js`, by:
+  - Adding `react-refresh` config
+  - Removing all configuration related to `sass`
+  - Changing assetModule folder from `images` to `assets`
+  - Changing `html-webpack-plugin` config, leaving only the `title`, since the previous `meta` tag was automatically set and favicon is now managed by `react-helmet`
 
 ### Removed
 - Build hash in `Footer` component
-
-<!-- No changes made yet. Check the to-dos section in [README.md] for more information of what's to come. -->
+- `max-len` rule from `.eslintrc.json`
+- `regenerator-runtime` library, since it's present out of the box just by having `core-js` as dependency
 
 ## [1.0.0] (2021-03-15)
 
@@ -73,5 +117,6 @@ All notable changes to this project will be documented in this file.
 [//]: # (Reference Links)
 
 [README.md]: <https://github.com/lucasfrsi/react-boilerplate#to-dos>
-[Unreleased]: <https://github.com/lucasfrsi/react-boilerplate/compare/v1.0.0...HEAD>
+[Unreleased]: <https://github.com/lucasfrsi/react-boilerplate/compare/v1.0.1...HEAD>
 [1.0.0]: <https://github.com/lucasfrsi/react-boilerplate/releases/tag/v1.0.0>
+[1.0.1]: <https://github.com/lucasfrsi/react-boilerplate/releases/tag/v1.0.1>

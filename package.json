@@ -3,6 +3,7 @@
   "version": "1.0.1",
   "description": "React boilerplate template for web projects.",
   "main": "src/index.jsx",
+  "private": true,
   "scripts": {
     "start": "webpack serve --config ./webpack.config.js --progress",
     "build": "npm run validate && cross-env NODE_ENV=production webpack --config webpack.config.js --progress",
@@ -20,6 +21,7 @@
     "type": "git",
     "url": "https://github.com/lucasfrsi/react-boilerplate"
   },
+  "bugs": "https://github.com/lucasfrsi/react-boilerplate/issues",
   "keywords": [
     "axios",
     "babel",
@@ -29,6 +31,8 @@
     "jest",
     "prop-types",
     "react",
+    "react-helmet",
+    "react-refresh",
     "redux",
     "redux-logger",
     "redux-saga",
@@ -39,11 +43,19 @@
     "webpack"
   ],
   "author": "Lucas F. Simoni",
+  "contributors": [
+    {
+      "name": "Lucas F. Simoni",
+      "email": "lucasfrsi@gmail.com",
+      "url": "https://lucasfrsi.com"
+    }
+  ],
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.13.14",
     "@babel/preset-env": "^7.13.12",
     "@babel/preset-react": "^7.13.13",
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.4.3",
     "@testing-library/jest-dom": "^5.11.10",
     "@testing-library/react": "^11.2.6",
     "@testing-library/user-event": "^13.1.1",
@@ -61,6 +73,7 @@
     "html-webpack-plugin": "^5.3.1",
     "jest": "^26.6.3",
     "jest-styled-components": "^7.0.3",
+    "react-refresh": "^0.10.0",
     "stylelint": "^13.12.0",
     "stylelint-config-recommended": "^4.0.0",
     "stylelint-config-styled-components": "^0.1.1",
@@ -74,6 +87,7 @@
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-helmet": "^6.1.0",
     "react-redux": "^7.2.3",
     "react-router-dom": "^5.2.0",
     "redux": "^4.0.5",
