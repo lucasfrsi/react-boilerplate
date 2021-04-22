@@ -9,8 +9,7 @@ This project is meant to be used as a boilerplate code for web projects based on
 - [react-router-dom]
 
 ### Styling
-- [sass]
-  - [PostCSS] configured with [postcss-preset-env] to support modern CSS and autoprefixing based on targeted browsers.
+- [styled-components]
 
 ### State Management and Side-Effects
 - [redux]
@@ -25,14 +24,17 @@ This project is meant to be used as a boilerplate code for web projects based on
 
 ### Linting
 - [eslint] - based on [Airbnb]
-- [stylelint] - based on [sass-guidelines]
+- [stylelint]
 
 ### Testing
 - [jest]
 - [@testing-library/react]
 
-### Browser Support
-- Change the **browserslist** config inside **package.json** according to your needs. Both Babel and PostCSS will take care of polyfills and autoprefixing.
+### SEO
+- [react-helmet] - to allow dynamically management of the document's head section.
+
+## Browser Support
+Change the **browserslist** config inside **package.json** according to your needs.
 
 ## Installation
 
@@ -123,7 +125,7 @@ $ npm run clean
 
 ## To-dos
 
-- [ ] Implement React Refresh and its webpack plugin (currently waiting for a  non-experimental release)
+- [x] Implement React Refresh
 - [ ] Browserslist is the default for webpack target, however it currently breaks page refresh on changes. This is an issue with webpack-dev-server that should be fixed in future releases (v4+)
 
 ## Contributing
@@ -149,17 +151,17 @@ Based on [react-base], from Thiago L. Lima.
 [extension]: <https://github.com/zalmoxisus/redux-devtools-extension>
 [redux-saga]: <https://redux-saga.js.org/>
 [axios]: <https://github.com/axios/axios>
-[sass]: <https://sass-lang.com/>
+[styled-components]: <https://styled-components.com/>
 [PostCSS]: <https://github.com/postcss/postcss>
 [postcss-preset-env]: <https://github.com/csstools/postcss-preset-env>
 [webpack]: <https://webpack.js.org/>
 [babel]: <https://babeljs.io/>
 [eslint]: <https://eslint.org/>
 [stylelint]: <https://github.com/stylelint/stylelint>
-[sass-guidelines]: <https://github.com/bjankord/stylelint-config-sass-guidelines>
 [Airbnb]: <https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb>
 [jest]: <https://github.com/facebook/jest>
 [@testing-library/react]: <https://github.com/testing-library/react-testing-library>
+[react-helmet]: <https://github.com/nfl/react-helmet>
 
 [react-base]: <https://github.com/tlima/react-base>
 
