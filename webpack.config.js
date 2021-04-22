@@ -1,11 +1,9 @@
-/* eslint-disable global-require */
 const path = require('path');
 const webpack = require('webpack');
 
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
@@ -19,7 +17,7 @@ const config = {
     publicPath: '/',
     filename: '[name].[contenthash].js',
     chunkFilename: 'chunks/[contenthash].js',
-    assetModuleFilename: 'images/[contenthash:8][ext]',
+    assetModuleFilename: 'assets/[contenthash:8][ext]',
     clean: true,
   },
 
@@ -28,50 +26,9 @@ const config = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: 'babel-loader',
-      },
-      {
-        test: /\.s[ac]ss$/i,
-        use: [
-          isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 2,
-              modules: {
-                localIdentName: '[local]_[hash:base64:6]',
-              },
-            },
-          },
-          {
-            loader: 'postcss-loader',
-            options: {
-              postcssOptions: {
-                plugins: [
-                  'postcss-flexbugs-fixes',
-                  [
-                    'postcss-preset-env',
-                    {
-                      autoprefixer: {
-                        flexbox: 'no-2009',
-                      },
-                      stage: 3,
-                    },
-                  ],
-                ],
-              },
-            },
-          },
-          {
-            loader: 'sass-loader',
-            options: {
-              implementation: require('sass'),
-              sassOptions: {
-                fiber: require('fibers'),
-              },
-            },
-          },
-        ],
+        use: {
+          loader: 'babel-loader',
+        },
       },
       {
         test: /\.(png|jpg|jpeg|gif|svg)$/i,
@@ -86,11 +43,12 @@ const config = {
       components: path.join(__dirname, 'src', 'components'),
       lib: path.join(__dirname, 'src', 'lib'),
       pages: path.join(__dirname, 'src', 'pages'),
-      sass: path.join(__dirname, 'src', 'sass'),
       services: path.join(__dirname, 'src', 'services'),
       store: path.join(__dirname, 'src', 'store'),
+      style: path.join(__dirname, 'src', 'style'),
+      utils: path.join(__dirname, 'src', 'utils'),
     },
-    extensions: ['.js', '.jsx', '.scss'],
+    extensions: ['.js', '.jsx'],
     symlinks: false,
   },
 
@@ -106,19 +64,11 @@ const config = {
         },
       },
     },
-    minimizer: [
-      '...',
-      new CssMinimizerPlugin(),
-    ],
   },
 
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'React Boilerplate v1.0.0',
-      meta: {
-        viewport: 'width=device-width, initial-scale=1',
-      },
-      favicon: path.join(__dirname, 'src', 'assets', 'favicon.png'),
+      title: 'React Boilerplate',
     }),
     new CompressionPlugin(),
     new webpack.DefinePlugin({ __webpack_devmode__: isDevelopment }),
@@ -126,8 +76,6 @@ const config = {
 };
 
 if (isDevelopment) {
-  config.target = 'web';
-
   config.devServer = {
     contentBase: './dist',
     hot: true,
@@ -136,14 +84,17 @@ if (isDevelopment) {
     compress: true,
   };
 
+  config.module.rules[0].use.options = {
+    plugins: ['react-refresh/babel'],
+  };
+
+  config.plugins.push(new ReactRefreshWebpackPlugin());
+
   config.devtool = 'eval-source-map';
+
+  config.target = 'web';
 } else {
   config.target = 'browserslist';
-
-  config.plugins.push(new MiniCssExtractPlugin({
-    filename: '[name].[contenthash].css',
-    chunkFilename: 'chunks/[id].[contenthash].css',
-  }));
 }
 
 module.exports = config;

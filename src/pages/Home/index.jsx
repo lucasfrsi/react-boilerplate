@@ -2,11 +2,11 @@
 import React from 'react';
 
 import reactlogo from 'assets/react-logo.svg';
-import styles from './style.scss';
+import * as styles from './style';
 
 const Home = () => (
-  <div className={styles.home}>
-    <h1>REACT BOILERPLATE v1.0.0</h1>
+  <div css={styles.home}>
+    <h1>REACT BOILERPLATE</h1>
     <h2><b>Mode:</b> {__webpack_devmode__ ? 'Development' : 'Production'}</h2>
     <img src={reactlogo} alt="react logo" />
   </div>

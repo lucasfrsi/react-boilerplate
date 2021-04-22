@@ -4,7 +4,7 @@ axios.defaults.baseURL = 'https://jsonplaceholder.typicode.com';
 
 export const getPosts = () => axios.get('/posts', {
   params: {
-    _limit: 10,
+    _limit: 2,
   },
 });
 

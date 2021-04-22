@@ -3,7 +3,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { increaseCountAction, decreaseCountAction, resetCountAction } from '../../store/actions/counter';
 
-import styles from './style.scss';
+import * as styles from './style';
 
 const CounterFooter = () => {
   const dispatch = useDispatch();
@@ -14,10 +14,10 @@ const CounterFooter = () => {
   const counter = useSelector((state) => state.counter);
 
   return (
-    <footer className={styles.footer}>
-      <button className={[styles.button, styles.subtract].join(' ')} type="button" onClick={() => decreaseCount()}>-</button>
-      <span role="presentation" className={styles.span} onClick={() => resetCount()}>{counter}</span>
-      <button className={[styles.button, styles.add].join(' ')} type="button" onClick={() => increaseCount()}>+</button>
+    <footer css={styles.footer}>
+      <button type="button" onClick={() => decreaseCount()}>-</button>
+      <span role="presentation" onClick={() => resetCount()}>{counter}</span>
+      <button type="button" onClick={() => increaseCount()}>+</button>
       <p>Click the count to reset it!</p>
     </footer>
   );

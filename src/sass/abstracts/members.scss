@@ -1,7 +1,0 @@
-@forward './functions';
-@forward './mixins';
-@forward './variables';
-
-// When importing this file, use:
-// @use '.../abstracts/members.scss' as *;
-// By doing that all the functions, mixins and variables become available to be used.
