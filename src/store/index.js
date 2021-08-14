@@ -6,7 +6,11 @@ import { createLogger } from 'redux-logger';
 import rootReducer from './reducers';
 import rootSaga from './sagas';
 
-const composeEnhancers = (__webpack_devmode__ ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null) || compose;
+const composeEnhancers = (
+  __webpack_devmode__
+    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+    : null
+) || compose;
 
 const sagaMiddleware = createSagaMiddleware();
 
