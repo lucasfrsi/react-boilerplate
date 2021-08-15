@@ -1,0 +1,29 @@
+sudo: required
+
+language: minimal
+
+services:
+  - docker
+
+env:
+  global:
+    - SHA=$(git rev-parse HEAD)
+    - REPO_INFO=(${TRAVIS_REPO_SLUG//\// })
+
+stages:
+  - build
+  - deploy
+
+jobs:
+  include:
+    - stage: build
+      name: "Test and build via Dockerfile"
+      script: bash scripts/build.sh
+
+    - stage: deploy
+      name: "Push image to Docker Hub"
+      deploy:
+        provider: script
+        script: bash scripts/push.sh
+        on:
+          branch: master
