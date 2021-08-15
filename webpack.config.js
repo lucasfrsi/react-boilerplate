@@ -23,6 +23,17 @@ const config = {
 
   module: {
     rules: [
+      /*
+        This rule is added to fix a "Module not found: Error"
+        Related to babel ./defineProperty
+        https://github.com/webpack/webpack/issues/11467
+      */
+      {
+        test: /\.m?js/,
+        resolve: {
+          fullySpecified: false,
+        },
+      },
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
@@ -84,7 +95,8 @@ if (isDevelopment) {
     compress: true,
   };
 
-  config.module.rules[0].use.options = {
+  // Use React Refresh, add it to babel-loader options plugins
+  config.module.rules[1].use.options = {
     plugins: ['react-refresh/babel'],
   };
 
