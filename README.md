@@ -36,6 +36,8 @@ This project is meant to be used as a boilerplate code for web projects based on
 ## Browser Support
 Change the **browserslist** config inside **package.json** according to your needs.
 
+## Dockerr
+
 ## Installation
 
 ```sh
