@@ -9,18 +9,11 @@ env:
   global:
     - SHA=$(git rev-parse HEAD)
 
-stages:
-  - build
-  - deploy
-
 jobs:
   include:
-    - stage: build
-      name: "Test and build via Dockerfile"
+    - stage: main
+      name: "Test and build via Dockerfile, then push to Docker Hub"
       script: bash scripts/build.sh
-
-    - stage: deploy
-      name: "Push image to Docker Hub"
       deploy:
         provider: script
         script: bash scripts/push.sh
