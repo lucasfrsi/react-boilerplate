@@ -8,7 +8,6 @@ services:
 env:
   global:
     - SHA=$(git rev-parse HEAD)
-    - REPO_INFO=(${TRAVIS_REPO_SLUG//\// })
 
 stages:
   - build
