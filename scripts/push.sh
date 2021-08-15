@@ -5,5 +5,5 @@ set -x
 
 echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
-docker push $DOCKER_USERNAME/${REPO_INFO[1]}:$SHA
-docker push $DOCKER_USERNAME/${REPO_INFO[1]}:latest
+docker push $DOCKER_USERNAME/react-boilerplate:$SHA
+docker push $DOCKER_USERNAME/react-boilerplate:latest

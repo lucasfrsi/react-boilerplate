@@ -3,4 +3,4 @@
 set -e
 set -x
 
-docker build -t $DOCKER_USERNAME/${REPO_INFO[1]}:latest -t $DOCKER_USERNAME/${REPO_INFO[1]}:$SHA 
+docker build -t $DOCKER_USERNAME/react-boilerplate:latest -t $DOCKER_USERNAME/react-boilerplate:$SHA 
