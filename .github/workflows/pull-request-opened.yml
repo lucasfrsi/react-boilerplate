@@ -1,0 +1,31 @@
+name: Pull Request Opened
+
+on:
+  pull_request:
+    branches: [master]
+    types: [opened]
+
+jobs:
+  test:
+    name: Lint and test
+
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16.x
+          cache: 'npm'
+
+      - name: Install NPM packages
+        run: npm ci --ignore-scripts
+
+      - name: Run lint
+        run: npm run lint
+
+      - name: Run tests
+        run: npm run test
