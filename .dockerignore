@@ -1,6 +1,7 @@
 .husky/
 coverage/
 node_modules/
+scripts/
 
 .git/
 .gitignore

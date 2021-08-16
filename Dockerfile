@@ -9,7 +9,8 @@ RUN npm ci --ignore-scripts
 
 COPY . .
 
-RUN npm run validate
+RUN npm run lint
+RUN npm run test
 
 RUN npm run build
 
