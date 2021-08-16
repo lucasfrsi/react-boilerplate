@@ -17,5 +17,6 @@ jsconfig.json
 
 *.md
 
-dist/
-build/
+# This might be of use, locally
+# dist/
+# build/
