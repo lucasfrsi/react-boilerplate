@@ -1,0 +1,14 @@
+{
+  "recommendations": [
+    "CoenraadS.bracket-pair-colorizer-2",
+    "naumovs.color-highlight",
+    "anseki.vscode-color",
+    "ms-azuretools.vscode-docker",
+    "dbaeumer.vscode-eslint",
+    "huizhou.githd",
+    "GitHub.vscode-pull-request-github",
+    "stylelint.vscode-stylelint",
+    "vscode-icons-team.vscode-icons",
+    "jpoissonnier.vscode-styled-components"
+  ]
+}
