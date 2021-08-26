@@ -1,3 +1,5 @@
+This project is **archived** and no longer maintained. Please refer to [react-template](https://github.com/lucasfrsi/react-template) instead.
+
 # react-boilerplate
 
 This project is meant to be used as a boilerplate code for web projects based on React. It comes with an opinionated base folder structure and all libraries and webpack pre-configured.
